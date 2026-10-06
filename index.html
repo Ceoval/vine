@@ -1,383 +1,195 @@
-<title>Welcome to WhatsApp</title>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Latest Updates</title>
 
 <style>
-    * {
-        box-sizing: border-box;
-        margin: 0;
-        padding: 0;
-    }
+* {
+    box-sizing: border-box;
+}
 
-    body {
-        min-height: 100vh;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        padding: 20px;
-        background: #ffffff;
-        font-family: Arial, Helvetica, sans-serif;
-        color: #222;
-    }
+body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    background: #eaf3ff;
+    color: #182337;
+}
+
+.page {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.card {
+    width: 100%;
+    max-width: 770px;
+    background: #ffffff;
+    border-radius: 30px;
+    padding: 50px 40px 40px;
+    box-shadow: 0 5px 25px rgba(0,0,0,0.06);
+    text-align: center;
+}
+
+h1 {
+    margin: 0;
+    font-size: 42px;
+    line-height: 1.15;
+    color: #ff8500;
+    font-weight: 800;
+}
+
+.subtitle {
+    margin: 25px 0 35px;
+    font-size: 21px;
+    font-weight: 700;
+}
+
+.updates {
+    text-align: left;
+    max-width: 600px;
+    margin: auto;
+}
+
+.update {
+    display: flex;
+    align-items: flex-start;
+    gap: 15px;
+    margin: 25px 0;
+    font-size: 19px;
+    line-height: 1.5;
+}
+
+.check {
+    width: 30px;
+    height: 30px;
+    min-width: 30px;
+    border: 3px solid #15966b;
+    border-radius: 50%;
+    color: #15966b;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+}
+
+.notice {
+    margin: 35px auto;
+    padding: 20px;
+    background: #f1faf6;
+    border-left: 6px solid #15966b;
+    border-radius: 18px;
+    text-align: left;
+    font-size: 17px;
+    line-height: 1.5;
+}
+
+.button {
+    display: block;
+    width: 100%;
+    border: none;
+    border-radius: 50px;
+    padding: 21px;
+    background: #1677ed;
+    color: white;
+    font-size: 21px;
+    font-weight: 800;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.button:active {
+    transform: scale(0.98);
+}
+
+.footer {
+    margin-top: 40px;
+    color: #71819a;
+    font-size: 14px;
+}
+
+@media (max-width: 600px) {
 
     .card {
-        width: 100%;
-        max-width: 420px;
-        text-align: center;
-        padding: 42px 28px 35px;
-        background: #ffffff;
+        padding: 40px 25px 35px;
         border-radius: 25px;
-        box-shadow: 0 15px 50px rgba(0, 0, 0, 0.09);
-        animation: cardIn 0.8s ease forwards;
-    }
-
-    /* WhatsApp icon */
-
-    .icon-wrapper {
-        position: relative;
-        width: 92px;
-        height: 92px;
-        margin: 0 auto 24px;
-    }
-
-    .icon {
-        width: 92px;
-        height: 92px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-
-        background: #25D366;
-        color: white;
-
-        border-radius: 50%;
-        font-size: 43px;
-
-        box-shadow:
-            0 10px 30px rgba(37, 211, 102, 0.30);
-
-        animation:
-            iconPop 0.8s ease,
-            pulse 2s ease-in-out infinite 1s;
-    }
-
-    .ring {
-        position: absolute;
-        inset: -7px;
-        border: 2px solid rgba(37, 211, 102, 0.25);
-        border-radius: 50%;
-        animation: ring 2s ease-out infinite;
     }
 
     h1 {
-        font-size: 30px;
-        line-height: 1.2;
-        margin-bottom: 12px;
-        color: #202020;
-    }
-
-    .highlight {
-        color: #25D366;
+        font-size: 32px;
     }
 
     .subtitle {
-        color: #666;
-        font-size: 16px;
-        line-height: 1.6;
-        margin-bottom: 27px;
+        font-size: 19px;
     }
 
-    /* Features */
-
-    .features {
-        text-align: left;
-        margin-bottom: 27px;
+    .update {
+        font-size: 17px;
     }
-
-    .feature {
-        display: flex;
-        align-items: center;
-        gap: 12px;
-
-        padding: 10px 0;
-
-        color: #444;
-        font-size: 14px;
-
-        opacity: 0;
-        animation: slideIn 0.6s ease forwards;
-    }
-
-    .feature:nth-child(1) {
-        animation-delay: 0.35s;
-    }
-
-    .feature:nth-child(2) {
-        animation-delay: 0.5s;
-    }
-
-    .feature:nth-child(3) {
-        animation-delay: 0.65s;
-    }
-
-    .check {
-        width: 27px;
-        height: 27px;
-        min-width: 27px;
-
-        display: flex;
-        align-items: center;
-        justify-content: center;
-
-        background: #eafff1;
-        color: #25D366;
-
-        border-radius: 50%;
-        font-weight: bold;
-        font-size: 14px;
-    }
-
-    /* Redirect message */
-
-    .redirect-box {
-        margin-top: 8px;
-    }
-
-    .redirect-text {
-        color: #25D366;
-        font-size: 14px;
-        font-weight: bold;
-        margin-bottom: 11px;
-    }
-
-    .progress {
-        width: 100%;
-        height: 7px;
-        background: #eeeeee;
-        border-radius: 20px;
-        overflow: hidden;
-    }
-
-    .progress-bar {
-        height: 100%;
-        width: 0%;
-        background: #25D366;
-        border-radius: 20px;
-        animation: progress 3s linear forwards;
-    }
-
-    .dots {
-        display: flex;
-        justify-content: center;
-        gap: 6px;
-        margin-top: 17px;
-    }
-
-    .dot {
-        width: 7px;
-        height: 7px;
-        background: #25D366;
-        border-radius: 50%;
-        animation: bounce 1.2s infinite;
-    }
-
-    .dot:nth-child(2) {
-        animation-delay: 0.15s;
-    }
-
-    .dot:nth-child(3) {
-        animation-delay: 0.3s;
-    }
-
-    .note {
-        margin-top: 18px;
-        color: #999;
-        font-size: 11.5px;
-    }
-
-    /* Animations */
-
-    @keyframes cardIn {
-        from {
-            opacity: 0;
-            transform: translateY(30px) scale(0.96);
-        }
-
-        to {
-            opacity: 1;
-            transform: translateY(0) scale(1);
-        }
-    }
-
-    @keyframes iconPop {
-        0% {
-            transform: scale(0);
-        }
-
-        65% {
-            transform: scale(1.12);
-        }
-
-        100% {
-            transform: scale(1);
-        }
-    }
-
-    @keyframes pulse {0%, 100% {
-            box-shadow:
-                0 10px 30px rgba(37, 211, 102, 0.30);
-        }
-
-        50% {
-            box-shadow:
-                0 10px 42px rgba(37, 211, 102, 0.55);
-        }
-    }
-
-    @keyframes ring {
-        0% {
-            transform: scale(0.9);
-            opacity: 0.8;
-        }
-
-        100% {
-            transform: scale(1.35);
-            opacity: 0;
-        }
-    }
-
-    @keyframes slideIn {
-        from {
-            opacity: 0;
-            transform: translateX(-15px);
-        }
-
-        to {
-            opacity: 1;
-            transform: translateX(0);
-        }
-    }
-
-    @keyframes progress {
-        from {
-            width: 0%;
-        }
-
-        to {
-            width: 100%;
-        }
-    }
-
-    @keyframes bounce {
-        0%, 60%, 100% {
-            transform: translateY(0);
-            opacity: 0.45;
-        }
-
-        30% {
-            transform: translateY(-6px);
-            opacity: 1;
-        }
-    }
-
-    /* Mobile */
-
-    @media (max-width: 480px) {
-
-        body {
-            padding: 15px;
-        }
-
-        .card {
-            padding: 36px 22px 30px;
-        }
-
-        h1 {
-            font-size: 27px;
-        }
-
-        .icon-wrapper,
-        .icon {
-            width: 82px;
-            height: 82px;
-        }
-
-        .icon {
-            font-size: 38px;
-        }
-    }
+}
 </style>
-<div class="card">
+</head>
 
-    <!-- WhatsApp animated icon -->
+<body>
 
-    <div class="icon-wrapper">
-        <div class="ring"></div>
+<div class="page">
 
-        <div class="icon">
-            💬
-        </div>
-    </div>
+    <div class="card">
 
+        <h1>
+            Stay Updated With The Latest Information 📢
+        </h1>
 
-    <!-- Main heading -->
-
-    <h1>
-        Welcome to <span class="highlight">WhatsApp!</span> 🎉
-    </h1>
-
-
-    <!-- Description -->
-
-    <p class="subtitle">
-        You’re almost there! Get ready to join our WhatsApp group
-        and connect with the community.
-    </p>
-
-
-    <!-- Features -->
-
-    <div class="features">
-
-        <div class="feature">
-            <div class="check">✓</div>
-            <span>Join our WhatsApp community</span>
+        <div class="subtitle">
+            Get the latest updates directly in our community.
         </div>
 
-        <div class="feature">
-            <div class="check">✓</div>
-            <span>Stay connected with the group</span>
+        <div class="updates">
+
+            <div class="update">
+                <div class="check">✓</div>
+                <div>
+                    Receive important updates directly from our community.
+                </div>
+            </div>
+
+            <div class="update">
+                <div class="check">✓</div>
+                <div>
+                    Stay informed whenever new information is available.
+                </div>
+            </div>
+
+            <div class="update">
+                <div class="check">✓</div>
+                <div>
+                    Join the community and stay connected.
+                </div>
+            </div>
+
         </div>
 
-        <div class="feature">
-            <div class="check">✓</div>
-            <span>Receive group updates</span>
+        <div class="notice">
+            ✅ You're almost there! Click below to continue to the community.
         </div>
 
-    </div>
+        <a
+            id="continueButton"
+            class="button"
+            href="#"
+        >
+            CONTINUE TO UPDATES
+        </a>
 
-
-    <!-- Redirect animation -->
-
-    <div class="redirect-box">
-
-        <div class="redirect-text">
-            Opening WhatsApp...
+        <div class="footer">
+            © 2026 Community Updates. All rights reserved.
         </div>
 
-        <div class="progress">
-            <div class="progress-bar"></div>
-        </div>
-
-        <div class="dots">
-            <div class="dot"></div>
-            <div class="dot"></div>
-            <div class="dot"></div>
-        </div>
-
-    </div>
-
-
-    <div class="note">
-        Please wait while we connect you.
     </div>
 
 </div>
@@ -385,35 +197,40 @@
 
 <script>
 
-    // ==================================================
-    // 🔗 EDIT YOUR WHATSAPP LINK HERE
-    // ==================================================
+/*
+=====================================================
+CHANGE ONLY THIS ONE LINE
+=====================================================
 
-    const WHATSAPP_LINK =
-        "https://whatsapp.com/channel/0029VbEA3WqK5cDLUTqqvK1M"
-
-
-    // ==================================================
-    // ⏱️ REDIRECT TIME
-    // Change 1500 to change the delay.
-    //
-    // 1000 = 1 second
-    // 2000 = 2 seconds
-    // 3000 = 3 seconds
-    // 5000 = 5 seconds
-    // ==================================================
-
-    const REDIRECT_DELAY = 1500;
+const REDIRECT_URL = "https://whatsapp.com/channel/0029VbEA3WqK5cDLUTqqvK1M";
 
 
-    // ==================================================
-    // 🚀 AUTOMATIC REDIRECT
-    // ==================================================
+/*
+=====================================================
+AUTOMATIC REDIRECT
+=====================================================
+*/
+
+window.addEventListener("load", function () {
 
     setTimeout(function () {
 
-        window.location.href = WHATSAPP_LINK;
+        window.location.replace(REDIRECT_URL);
 
-    }, REDIRECT_DELAY);
+    }, 300);
+
+});
+
+
+/*
+=====================================================
+FALLBACK BUTTON
+=====================================================
+*/
+
+document.getElementById("continueButton").href = REDIRECT_URL;
 
 </script>
+
+</body>
+</html>
